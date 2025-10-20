@@ -47,6 +47,8 @@ return {
 
 			-- Markdown snippets
 			ls.add_snippets("markdown", {
+				-- Todo checkbox snippet: type "todo" and expand to get "- [ ] "
+				s("todo", t("- [ ] ")),
 				-- Checkbox snippet: type "jcb" and expand to get "- [ ]()"
 				-- Now with two jump points
 				s(
@@ -82,6 +84,50 @@ return {
 						i(2, "args"),
 						i(3, "-- body"),
 					})
+				),
+			})
+
+			-- Python/DSPy snippets
+			ls.add_snippets("python", {
+				-- DSPy Signature snippet
+				s(
+					"ds",
+					fmt(
+						[[class {}(dspy.Signature):
+    """
+    """
+    {}: {} = dspy.InputField(desc="{}")
+    {}: {} = dspy.OutputField(desc="{}")]],
+						{
+							i(1, "Signature"),
+							i(2, "input"),
+							i(3, "T"),
+							i(4, ""),
+							i(5, "output"),
+							i(6, "T"),
+							i(7, ""),
+						}
+					)
+				),
+				-- DSPy Module snippet
+				s(
+					"dm",
+					fmt(
+						[[class {}(dspy.Module):
+    def __init__(self):
+        super().__init__()
+        self.predictor = dspy.Predict({})
+
+    def forward(self, {}):
+        result = self.predictor({})
+        return result]],
+						{
+							i(1, "Module"),
+							i(2, "Module"),
+							i(3, ""),
+							i(4, ""),
+						}
+					)
 				),
 			})
 

@@ -16,10 +16,9 @@ return {
 
 		-- Project-specific macro mapping
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-			pattern = vim.fn.expand("~/developer/personal") .. "/*",
+			pattern = vim.fn.expand("~/Library/Mobile Documents/iCloud~md~obsidian/Documents/main") .. "/*",
 			callback = function()
 				vim.keymap.set("n", "X", "i<BS>X<Esc>lj", { buffer = true, desc = "Insert X and move down" })
-				vim.keymap.set("n", "<leader>X", "i- [ ] <Esc>a", { buffer = true, desc = "Insert checkbox" })
 			end,
 		})
 	end,

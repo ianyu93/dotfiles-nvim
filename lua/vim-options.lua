@@ -3,8 +3,22 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.g.mapleader = " "
--- Put this somewhere in your lua config (e.g. after you attach an LSP)
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP: rename symbol under cursor" })
+vim.o.jumpoptions = "stack"
+
+-- Global keymaps
+vim.keymap.set('n', '<leader>/', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight', silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to system clipboard', silent = true })
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste over (keep clipboard)', silent = true })
+
+-- LSP keybindings (minimal set)
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local opts = { buffer = args.buf }
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', opts, { desc = 'Show references' }))
+    vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, vim.tbl_extend('force', opts, { desc = 'Go to implementation' }))
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'Rename symbol' }))
+  end,
+})
 
 -- Disable experimental treesitter warning
 vim.g.experimental_check_rtp = false
