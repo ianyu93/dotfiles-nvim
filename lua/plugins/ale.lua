@@ -18,7 +18,8 @@ return {
 			baml = {},
 		}
 		g.ale_fixers = {
-			python = { "ruff_format" },
+			-- Run ruff to sort imports (I) before formatting
+			python = { "ruff", "ruff_format" },
 			javascript = { "prettier", "eslint" },
 			typescript = { "prettier", "eslint" },
 			typescriptreact = { "prettier", "eslint" },
@@ -28,6 +29,10 @@ return {
 			sql = { "sqlfluff" },
 		}
 
+		-- Configure ruff fixer to only apply import sorting (rule I)
+		-- ALE constructs the full command; these options are appended.
+		-- Effective command: `ruff check --fix --select I` (then `ruff format`).
+		g.ale_python_ruff_fix_options = "--select I"
 		-- Use local executables from node_modules
 		g.ale_javascript_eslint_executable = "npx"
 		g.ale_typescript_eslint_executable = "npx"
