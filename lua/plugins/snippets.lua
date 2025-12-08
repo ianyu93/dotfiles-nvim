@@ -94,8 +94,6 @@ return {
 					"ds",
 					fmt(
 						[[class {}(dspy.Signature):
-    """
-    """
     {}: {} = dspy.InputField(desc="{}")
     {}: {} = dspy.OutputField(desc="{}")]],
 						{

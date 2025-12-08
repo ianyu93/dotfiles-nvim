@@ -5,7 +5,7 @@ return {
 		require("diffview").setup({
 			-- Default configuration
 		})
-		
+
 		-- Keymap
 		vim.keymap.set("n", "<leader>gdm", ":DiffviewOpen main<CR>", { desc = "Diff view main" })
 	end,

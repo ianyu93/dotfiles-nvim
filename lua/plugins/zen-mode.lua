@@ -28,7 +28,7 @@ return {
 	},
 	config = function(_, opts)
 		require("zen-mode").setup(opts)
-		
+
 		-- Key mapping
 		vim.keymap.set("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle Zen Mode" })
 	end,

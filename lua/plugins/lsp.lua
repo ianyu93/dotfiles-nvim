@@ -1,7 +1,13 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = { "saghen/blink.cmp" },
 		config = function()
+			-- Add blink.cmp capabilities to all LSP servers
+			vim.lsp.config("*", {
+				capabilities = require("blink.cmp").get_lsp_capabilities(),
+			})
+
 			-- Configure language servers
 			vim.lsp.config("lua_ls", {
 				cmd = { "lua-language-server" },
