@@ -16,7 +16,19 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>s", function() Snacks.scratch() end, desc = "Toggle Scratchpad" },
-		{ "<leader>S", function() Snacks.scratch.select() end, desc = "Select Scratchpad" },
+		{
+			"<leader>s",
+			function()
+				Snacks.scratch()
+			end,
+			desc = "Toggle Scratchpad",
+		},
+		{
+			"<leader>S",
+			function()
+				Snacks.scratch.select()
+			end,
+			desc = "Select Scratchpad",
+		},
 	},
 }

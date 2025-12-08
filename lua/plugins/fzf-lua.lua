@@ -10,7 +10,7 @@ return {
 		require("fzf-lua").setup({
 			winopts = {
 				width = 0.95,
-				height = 0.95
+				height = 0.95,
 			},
 		})
 	end,
